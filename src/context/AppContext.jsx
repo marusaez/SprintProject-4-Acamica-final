@@ -1,22 +1,30 @@
-import React, { createContext, useState, useEffect } from "react";
-import { firestore, storage, auth, loginGoogle, logout } from "./firebase";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { auth } from "../firebase";
 
 export const AppContext = createContext();
 
-export const AppProvider = (props) => {
-  const [body, setBody] = useState({
-    tweet: "",
-    autor: "",
-    uid: "",
-    mail: "",
-    likes: 0,
-  });
+export const useAppContext = () => {
+  return useContext(AppContext);
+};
 
-
+const AppProvider = ({children}) => {
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+        const {displayName, email, photoURL, uid} = user
+        setUser({displayName, email, photoURL, uid});
+        console.log(user)
+      });
+      // return console.log(user)
+  }, []);
+  
   return (
-    <AppContext.Provider>
-      {props.children}
+    <AppContext.Provider value={{user, setUser}}>
+      {children}
     </AppContext.Provider>
     
   );
 }
+
+export default AppProvider;
