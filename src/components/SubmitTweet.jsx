@@ -3,14 +3,14 @@ import { useAppContext } from "../context/AppContext";
 import { firestore, storage, auth, loginGoogle, logout } from "../firebase";
 
 const SubmitTweet = () => {
-  const { user, setUser } = useAppContext();
-  const [tweet, setTweet] = useState({
-      tweet: "",
-      autor: "",
-      uid: "",
-      mail: "",
-      likes: 0,
-    });
+  const { user, tweet, setTweet } = useAppContext();
+//   const [tweet, setTweet] = useState({
+//       tweet: "",
+//       autor: "",
+//       uid: "",
+//       mail: "",
+//       likes: 0,
+//     });
     
     // console.log(user)
 
@@ -22,6 +22,7 @@ const SubmitTweet = () => {
       uid: user.uid,
       email: user.email,
       autor: user.displayName,
+      likedBy: []
     };
     setTweet(newTweet);
   };
@@ -43,10 +44,10 @@ const SubmitTweet = () => {
             type="text"
             name="tweet"
             defaultValue={tweet.tweet}
-            placeholder="Escribe tu tweet..."
+            placeholder="What's happening?"
         />
         <hr />
-        <input type="submit" value="Send" />
+        <input type="submit" value="Post" />
         <hr />
         {/* <Link to="/">Volver al Home</Link> */}
         {/* <button onClick={logout}>Logout</button> */}

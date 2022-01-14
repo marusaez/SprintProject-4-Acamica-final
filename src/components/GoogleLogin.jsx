@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const GoogleLogin = () => {
   const { user, setUser } = useAppContext();
-  
 
   return (
     <div>
