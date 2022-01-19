@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import { useAppContext } from "../context/AppContext";
 import { firestore, storage, auth, loginGoogle, logout } from "../firebase";
 import avatarPlaceholder from "../images/avatarPlaceholder.jpg"
+import corazon from "../images/corazon.svg"
+import like from "../images/like.png"
+import dislike from "../images/dislike.png"
 
 const Tweets = () => {
     const { user, tweet, setTweet, tweets, setTweets } = useAppContext();
@@ -21,13 +24,13 @@ const Tweets = () => {
   };
 
   //// LIKES
-  const likeTweet = (tweet) => {
+  const likeTweet = (tweet, user) => {
     // console.log("likes", tweet)
-    let newLikedBy = [...likedBy, uid];
+    let addLikedBy = [...tweet.likedBy, user.uid];
 
     firestore
       .doc(`tweets/${tweet.id}`)
-      .update({ likedBy: newLikedBy })
+      .update({ likedBy: addLikedBy })
     //   .then(() => {
         // getAllTweets();
     //   })
@@ -36,13 +39,61 @@ const Tweets = () => {
       });
   };
 
-  const dislikeTweet = (id, uid, likedBy) => {
-    const updatedLikedBy = likedBy.filter((userUid) => uid !== userUid);
+  const dislikeTweet = (tweet, user) => {
+    const updatedLikedBy = tweet.likedBy.filter((userUid) => user.uid !== userUid);
 
     // actualizamos el tweet en firebase
-    firestore.doc(`tweets/${id}`).update({ likedBy: updatedLikedBy });
+    firestore.doc(`tweets/${tweet.id}`).update({ likedBy: updatedLikedBy });
 };
 
+const showLike = (tweet, user) => {
+    if (tweet.likedBy && user) {
+        const liked = tweet.likedBy.findIndex((userLike) => user.uid === userLike);
+
+        // la persona no le ha dado like
+        if (liked < 0) {
+            return (
+                <>
+                    <span
+                        onClick={() => likeTweet(tweet, user)}
+                        className="likes"
+                    >
+                        {/* <span>X</span> */}
+                        <img height="12px" src={dislike} alt="" />
+                        <span>{tweet.likedBy.length}</span>
+                    </span>
+                </>
+            );
+        } else {
+            // si la persona ya le dio like
+            return (
+                <>
+                    <span
+                        onClick={() => dislikeTweet(tweet, user)}
+                        className="likes"
+                    >
+                        {/* <img height="12px" src={corazon} alt="" /> */}
+                        <img height="12px" src={like} alt="" />
+                        <span>{tweet.likedBy.length}</span>
+                    </span>
+                </>
+            );
+        }
+    } 
+    // else {
+    //     return (
+    //         <>
+    //             <span
+    //                 onClick={() => likeTweet(id, likes, user.uid, tweet.likedBy)}
+    //                 className="likes"
+    //             >
+    //                 <img height="13px" src={corazon} alt="" />
+    //                 <span>{likes ? likes : 0}</span>
+    //             </span>
+    //         </>
+    //     );
+    // }
+};
 
   useEffect(() => {
     // getAllTweets()
@@ -107,7 +158,9 @@ const Tweets = () => {
               {/* {edit ? <Tweet tweet={tweet} /> : <p>{tweet.message}</p>} */}
               <p>{tweet.tweet}</p>
               {/* <p>{body.tweet}</p> */}
-              <p>Likes: {tweet.likes}</p>
+              {/* <p>Likes: {tweet.likes}</p> */}
+              {/* ////// LIKES///////// */}
+              {/* <p>{showLike(tweet, user)}</p> */}
               {/* <button onClick={() => setEdit(!edit)}>Actualizar tweet</button> */}
               {user.uid === tweet.uid && <button onClick={() => deleteTweet(tweet.id)}>
                 Eliminar tweet
@@ -117,7 +170,9 @@ const Tweets = () => {
                 Eliminar tweet
               </button> */}
               
-              <button onClick={() => likeTweet(tweet)}>Me gusta</button>
+              {/* <button onClick={() => likeTweet(tweet)}>Me gusta</button> */}
+              {/* ////// LIKES///////// */}
+              <button>{showLike(tweet, user)}</button>
               <hr />
             </div>
           );
