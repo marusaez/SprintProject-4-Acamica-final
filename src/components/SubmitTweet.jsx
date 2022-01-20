@@ -31,6 +31,7 @@ const SubmitTweet = () => {
     e.preventDefault();
     // enviamos el tweet a la colección
     firestore.collection("tweets").add(tweet);
+    setTweet({...tweet, tweet: ""})
 };
 
 
@@ -43,10 +44,11 @@ const SubmitTweet = () => {
             onChange={createTweet}
             type="text"
             name="tweet"
-            defaultValue={tweet.tweet}
+            // defaultValue={tweet.tweet}
+            value={tweet.tweet}
             placeholder="What's happening?"
         />
-        <hr />
+        <br />
         <input type="submit" value="Post" />
         <hr />
         {/* <Link to="/">Volver al Home</Link> */}

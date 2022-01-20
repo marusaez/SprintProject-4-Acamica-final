@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useAppContext } from "../context/AppContext";
 import { firestore, storage, auth, loginGoogle, logout } from "../firebase";
 import avatarPlaceholder from "../images/avatarPlaceholder.jpg"
-import corazon from "../images/corazon.svg"
 import like from "../images/like.png"
 import dislike from "../images/dislike.png"
 
@@ -60,6 +59,7 @@ const showLike = (tweet, user) => {
                     >
                         {/* <span>X</span> */}
                         <img height="12px" src={dislike} alt="" />
+                        {/* <img height="12px" src="dislike.png" alt="" /> */}
                         <span>{tweet.likedBy.length}</span>
                     </span>
                 </>

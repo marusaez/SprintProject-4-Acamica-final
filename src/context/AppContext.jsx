@@ -21,14 +21,28 @@ const AppProvider = ({children}) => {
   
   
   useEffect(() => {
+
     auth.onAuthStateChanged((user) => {
+      console.log("este es el useEffect")
         const {displayName, email, photoURL, uid} = user
         setUser({displayName, email, photoURL, uid});
-        // console.log(user)
+        console.log([{displayName, email, photoURL, uid}])
       });
       // return console.log(user)
   }, []);
   
+  // useEffect(() => {
+  //   // auth.onAuthStateChanged((user) => {
+  //     console.log(auth.currentUser)
+  //     if (!auth.currentUser) return;
+  //     console.log(auth.currentUser)
+  //       const {displayName, email, photoURL, uid} = user
+  //       setUser({displayName, email, photoURL, uid});
+  //       console.log([{displayName, email, photoURL, uid}])
+  //     // });
+  //     // return console.log(user)
+  // }, [auth.currentUser]);
+
   return (
     <AppContext.Provider value={{user, setUser, tweet, setTweet, tweets, setTweets}}>
       {children}
