@@ -129,17 +129,7 @@ const showLike = (tweet, user) => {
     return (
         <div>
             <div>
-        {user ? (
-          <div>{user.photoURL ? <img src={user.photoURL} alt="Foto de perfil" /> : <img src={avatarPlaceholder} alt="Foto de perfil" />
-              }
-            {/* <img src={user.photoURL} alt="Foto de perfil" /> */}
-            <h4>{user.displayName}</h4>
-          </div>
-        ) : (
-          <div>
-            <p>Inicia sesión con tu cuenta de Google para acceder a los tweets</p>
-          </div>
-        )}
+       
       </div>
       <div>
         {tweets.map((tweet, i) => {

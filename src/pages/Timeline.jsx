@@ -1,28 +1,26 @@
 import React from "react";
-import { useAppContext } from "../context/AppContext";
 import SubmitTweet from "../components/SubmitTweet";
 import Tweets from "../components/Tweets";
-import { auth } from "../firebase";
+import TimelineHeader from "../components/TimelineHeader";
 
 const Timeline = () => {
-  const { setUser, user } = useAppContext();
+//   const { setUser, user } = useAppContext();
 
-  const logout = () => {
-    auth.signOut();
-    setUser(null);
-  };
+//   const logout = () => {
+//     auth.signOut();
+//     setUser(null);
+//   };
 
   return (
     <div>
-      {/* <button onClick={() => auth.signOut(setUser(null))}>Logout</button> */}
-      {/* <button onClick={() => auth.signOut(setUser(null))}>Logout</button> */}
-      <button onClick={logout}>Logout</button>
-      <div>
+        <TimelineHeader/>
+        <hr />
+      {/* <div> */}
         <SubmitTweet />
-      </div>
-      <div>
+      {/* </div> */}
+      {/* <div> */}
         <Tweets />
-      </div>
+      {/* </div> */}
     </div>
   );
 };
