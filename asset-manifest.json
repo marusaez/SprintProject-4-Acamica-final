@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/SprintProject-4-Acamica-final/static/js/main.08493051.js",
+    "static/media/like.png": "/SprintProject-4-Acamica-final/static/media/like.c281b201393b5edcd249.png",
+    "static/media/dislike.png": "/SprintProject-4-Acamica-final/static/media/dislike.e4ffc7816448cc0e4475.png",
+    "static/media/avatarPlaceholder.jpg": "/SprintProject-4-Acamica-final/static/media/avatarPlaceholder.90520c1e72ddc4247d0b.jpg",
+    "index.html": "/SprintProject-4-Acamica-final/index.html",
+    "main.08493051.js.map": "/SprintProject-4-Acamica-final/static/js/main.08493051.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.08493051.js"
+  ]
+}
