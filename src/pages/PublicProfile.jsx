@@ -1,11 +1,23 @@
-import React from 'react'
+import React from "react";
+import ProfileHeader from "../components/ProfileHeader";
+import { Navigate } from "react-router-dom";
+import { useAppContext } from "../context/AppContext";
 
 const PublicProfile = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  const { setUser, user, tweet } = useAppContext();
 
-export default PublicProfile
+  return (
+    <div>
+      {!user?.displayName ? (
+        <Navigate to="/" />
+      ) : (
+        <div>
+          <ProfileHeader />
+          <h2>en construcción...</h2>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default PublicProfile;

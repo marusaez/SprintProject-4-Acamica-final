@@ -5,7 +5,7 @@ import { useAppContext } from "../context/AppContext";
 import { auth } from "../firebase";
 
 const TimelineHeader = () => {
-    const { setUser, user } = useAppContext();
+    const { setUser, user, tweet } = useAppContext();
 
     const logout = () => {
       auth.signOut();
@@ -19,6 +19,7 @@ const TimelineHeader = () => {
           <img src={user.photoURL} alt="Foto de perfil" />
         ) : (
           <img src={avatarPlaceholder} alt="Foto de perfil" />
+          // <img src={tweet.photo} alt="Foto de perfil" />
         )}
       </Link >
       <button onClick={logout}>Logout</button>

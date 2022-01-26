@@ -12,7 +12,7 @@ const Main = () => {
                 <Route exact path="/" element={<Home/>}/>
                 <Route exact path="/Timeline" element={<Timeline/>}/>
                 <Route exact path="/UserProfile" element={<UserProfile/>}/>
-                {/* <Route exact path="/PublicProfile" element={<PublicProfile/>}/> */}
+                <Route exact path="/PublicProfile" element={<PublicProfile/>}/>
             </Routes>
         </main>
     )

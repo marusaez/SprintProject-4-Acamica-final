@@ -22,6 +22,7 @@ const SubmitTweet = () => {
     //verificar si existe usuario
     let newTweet = {
       tweet: e.target.value,
+      photo: user.photoURL,
       uid: user.uid,
       email: user.email,
       autor: user.displayName,

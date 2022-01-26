@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import ProfileHeader from "../components/ProfileHeader";
 import UserFavs from "../components/UserFavs";
 import UserPosts from "../components/UserPosts";
+import { Navigate } from "react-router-dom";
+import { useAppContext } from "../context/AppContext";
+
 
 const UserProfile = () => {
+  const { setUser, user, tweet } = useAppContext();
+
   const [posts, setPosts] = useState(true);
   const [favorites, setFavorites] = useState(false);
 
@@ -17,18 +22,22 @@ const UserProfile = () => {
     setFavorites(true);
   };
 
-  console.log(posts);
-  console.log(favorites);
   return (
-    <div>
-      <ProfileHeader />
-      <hr />
       <div>
-        <button onClick={postsBtnHandler}>Posts</button>
-        <button onClick={favsBtnHandler}>Favorites</button>
+        {!user?.displayName ? (
+          <Navigate to="/" />
+        ) : (
+          <div>
+            <ProfileHeader />
+            <hr />
+            <div>
+              <button onClick={postsBtnHandler}>Posts</button>
+              <button onClick={favsBtnHandler}>Favorites</button>
+            </div>
+            {posts ? <UserPosts /> : <UserFavs />}
+          </div>
+        )}
       </div>
-      {posts ? <UserPosts /> : <UserFavs />}
-    </div>
   );
 };
 
