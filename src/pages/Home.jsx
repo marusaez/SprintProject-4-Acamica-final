@@ -10,7 +10,7 @@ const Home = () => {
   const { user, setUser } = useAppContext();
 
   return (
-    <div>
+    <div className="Home">
       {/* <div>{user ? ColorSelect : <GoogleLogin/>}</div> */}
       {/* <div>{user?.displayName ? <Timeline /> : <GoogleLogin />}</div> */}
       <div>{user?.displayName ? <Navigate to="/Timeline" /> : <GoogleLogin />}</div>

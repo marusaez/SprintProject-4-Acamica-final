@@ -3,7 +3,6 @@ import { useAppContext } from "../context/AppContext";
 import { firestore, storage, auth, loginGoogle, logout } from "../firebase";
 import avatarPlaceholder from "../images/avatarPlaceholder.jpg";
 import like from "../images/like.png";
-import dislike from "../images/dislike.png";
 import { Link } from "react-router-dom";
 
 const Tweets = () => {
