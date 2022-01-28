@@ -164,12 +164,12 @@ const Tweets = () => {
             {tweet.uid === user.uid ? (
               <Link to="/UserProfile" onClick={console.log(user.uid)}>
                 {/* {" "} */}
-                <p>Usuario: {tweet.autor}</p>
+                <p>{tweet.autor}</p>
               </Link>
             ) : (
               <Link to="/PublicProfile" onClick={console.log(tweet.uid)}>
                 {/* {" "} */}
-                <p>Usuario: {tweet.autor}</p>
+                <p>{tweet.autor}</p>
               </Link>
             )}
             {/* <Link to="/UserProfile"> */}

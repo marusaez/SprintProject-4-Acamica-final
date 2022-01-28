@@ -1,0 +1,47 @@
+.SubmitTweet {
+  display: flex;
+  flex-direction: row;
+  /* width: 600px; */
+  width: 600px;
+  /* align-items: center; */
+  align-items: flex-start;
+  margin: 0 auto;
+  justify-content: space-between;
+  background-color: #150714;
+}
+
+.Timeline {
+  box-sizing: border-box;
+  width: 105%;
+  height: 120px;
+  margin: -5px 0px -5px -30px;
+  background-color: #150714;
+}
+
+.profilePicSub {
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+}
+
+.SubmitForm {
+  display: flex;
+  width: 88%;
+  flex-direction: column;
+}
+
+.SubmitTextarea {
+}
+
+.postOff {
+  width: 70px;
+  height: 26px;
+  cursor: pointer;
+  border: none;
+  background: url("../images/postOff.svg") no-repeat;
+}
+
+.postOff:hover {
+  background: url("../images/postOn.svg") no-repeat;
+}

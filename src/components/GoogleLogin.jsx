@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { firestore, auth, loginGoogle, logout } from "../firebase";
 import { useAppContext } from "../context/AppContext";
 import { Link } from "react-router-dom";
-import pageLogo from "../images/logo big.svg";
+import bigLogo from "../images/logo big.svg";
 import googleSignin from "../images/google sign in.svg";
 
 const GoogleLogin = () => {
@@ -12,7 +12,7 @@ const GoogleLogin = () => {
     <div className="GoogleLogin">
       {/* <div>logo devs united</div> */}
       <div>
-        <img src={pageLogo} alt="page logo" width="400" height="500" />
+        <img src={bigLogo} alt="page logo" width="400" height="500" />
       </div>
       <div>
         <h1 className="title">Welcome!</h1>
