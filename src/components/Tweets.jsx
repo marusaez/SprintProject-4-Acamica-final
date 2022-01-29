@@ -17,6 +17,8 @@ const Tweets = () => {
     showLike,
     profileRoute,
     setProfileRoute,
+    uid,
+    setUid,
   } = useAppContext();
 
   //     const deleteTweet = (id) => {
@@ -146,11 +148,15 @@ const Tweets = () => {
   //     }
   //     })
   //     }
-  console.log(profileRoute);
+
+  const handleProfileRoute = (uid) => {
+    setUid(uid);
+  };
+
   return (
-    <div>
+    <div className="Tweets">
       {tweets.map((tweet, i) => {
-        //   console.log(tweet)
+        console.log(tweet);
         return (
           <div id={tweet.id} key={i}>
             {/* {tweet.image && (
@@ -161,20 +167,27 @@ const Tweets = () => {
                   alt="profile picture"
                 />
               )} */}
-            {tweet.uid === user.uid ? (
-              <Link to="/UserProfile" onClick={console.log(user.uid)}>
-                {/* {" "} */}
-                <p>{tweet.autor}</p>
-              </Link>
-            ) : (
-              <Link to="/PublicProfile" onClick={console.log(tweet.uid)}>
-                {/* {" "} */}
-                <p>{tweet.autor}</p>
-              </Link>
-            )}
+            {/* {tweet.uid === user.uid ? ( */}
+            {/* <Link to="/UserProfile" onClick={console.log(user.uid)}> */}
+            {/* {" "} */}
+            {/* <p>{tweet.autor}</p> */}
+            {/* </Link> */}
+            {/* ) : ( */}
+            {/* <Link to="/PublicProfile" onClick={() => handleProfileRoute(tweet.uid)}> */}
+            {/* {" "} */}
+            {/* <p>{tweet.autor}</p> */}
+            {/* </Link> */}
+            {/* )} */}
             {/* <Link to="/UserProfile"> */}
             {/* <p>Usuario: {tweet.autor}</p>
               </Link> */}
+            <Link
+              to="/UserProfile"
+              onClick={() => handleProfileRoute(tweet.uid)}
+            >
+              <img src={tweet.photo} alt="profile picture" />
+              <p>{tweet.autor}</p>
+            </Link>
 
             {/* {edit ? <Tweet tweet={tweet} /> : <p>{tweet.message}</p>} */}
             <p>{tweet.tweet}</p>

@@ -1,5 +1,7 @@
 body {
   background-color: #2E132C;
+  color: whitesmoke;
+  /* width: 100%; */
 }
 
 @font-face {

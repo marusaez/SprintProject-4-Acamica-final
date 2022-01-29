@@ -23,7 +23,10 @@ const AppProvider = ({children}) => {
   });
   const [tweets, setTweets] = useState([]);
   const [profileRoute, setProfileRoute] = useState("")
-  
+  const [uid, setUid] = useState("")
+
+
+
   useEffect(() => {
 
     auth.onAuthStateChanged((user) => {
@@ -128,16 +131,9 @@ const showLike = (tweet, user) => {
       .collection("tweets")
       .onSnapshot((snapshot) => {
         const tweets = snapshot.docs.map((doc) => {
-          // return {
-          //   message: doc.data().message,
-          //   // uid: doc.data().user.uid,
-          //   user: doc.data().user,
-          //   likes: doc.data().likes,
-          //   image: doc.data().image || false,
-          //   id: doc.id,
-          // };
           return {
             tweet: doc.data().tweet,
+            photo: doc.data().photo,
             uid: doc.data().uid,
             autor: doc.data().autor,
             email: doc.data().email,
@@ -153,7 +149,7 @@ const showLike = (tweet, user) => {
 
     // console.log(tweets)
   return (
-    <AppContext.Provider value={{user, setUser, tweet, setTweet, tweets, setTweets, deleteTweet, showLike, profileRoute, setProfileRoute}}>
+    <AppContext.Provider value={{user, setUser, tweet, setTweet, tweets, setTweets, deleteTweet, showLike, profileRoute, setProfileRoute, uid, setUid}}>
       {children}
     </AppContext.Provider>
     

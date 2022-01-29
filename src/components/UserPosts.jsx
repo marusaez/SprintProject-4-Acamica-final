@@ -4,12 +4,12 @@ import { firestore, storage, auth, loginGoogle, logout } from "../firebase";
 
 
 const UserPosts = () => {
-    const { user, setUser, tweet, setTweet, tweets, setTweets, deleteTweet, showLike } = useAppContext();
+    const { user, setUser, tweet, setTweet, tweets, setTweets, deleteTweet, showLike, uid } = useAppContext();
 
     return (
       <div>
         {tweets.map((tweet, i) => {
-            if (user.uid === tweet.uid) {
+            if (uid === tweet.uid) {
                 
           return (
             <div id={tweet.id} key={i}>

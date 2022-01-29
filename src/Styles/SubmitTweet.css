@@ -23,15 +23,35 @@
   border-radius: 50%;
   width: 55px;
   height: 55px;
+  margin-top: 10px;
 }
 
 .SubmitForm {
   display: flex;
   width: 88%;
   flex-direction: column;
+  margin-top: 10px;
 }
 
 .SubmitTextarea {
+  background-color: #2f112d;
+  color: #914d8b;
+  font-family: "Fira Code", monospace;
+  border: none;
+  height: 60px;
+  padding: 0 0 32px 8px;
+  box-sizing: border-box;
+}
+
+.SubmitTextarea::placeholder {
+  color: #914d8b;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+
+.SubmitTextarea::-ms-input-placeholder {
+  color: #914d8b;
 }
 
 .postOff {
@@ -40,6 +60,7 @@
   cursor: pointer;
   border: none;
   background: url("../images/postOff.svg") no-repeat;
+  margin: 7px 0 0 457px;
 }
 
 .postOff:hover {

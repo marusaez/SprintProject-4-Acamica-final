@@ -4,12 +4,12 @@ import { firestore, storage, auth, loginGoogle, logout } from "../firebase";
 
 
 const UserFavs = () => {
-    const { user, setUser, tweet, setTweet, tweets, setTweets, deleteTweet, showLike } = useAppContext();
+    const { user, setUser, tweet, setTweet, tweets, setTweets, deleteTweet, showLike, uid} = useAppContext();
 
     return (
       <div>
         {tweets.map((tweet, i) => {
-            const userFavorites = tweet.likedBy.findIndex((favorite) => user.uid === favorite);
+            const userFavorites = tweet.likedBy.findIndex((favorite) => uid === favorite);
             console.log(userFavorites)
             
            if (userFavorites >= 0) {
