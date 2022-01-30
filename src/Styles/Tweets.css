@@ -2,5 +2,42 @@
 display: flex;
 flex-direction: column;
 margin: 0 auto;
+width: 550px;
+}
+
+.Tweet {
+display: flex;
+flex-direction: row;
+/* justify-content: space-around; */
 width: 600px;
+
+}
+.TweetOne {
+    margin-top: 14px;
+}
+
+.profilePicTweet {
+    border: 2.5px solid rgb(255, 187, 0);
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+  }
+
+.TweetTwo {
+    display: flex;
+    flex-direction: column;
+margin: 5px 5px 5px 15px;
+}
+
+.NameTrash {
+    display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+width: 500px;
+/* margin: 5px 5px 5px 20px; */
+}
+
+i:hover {
+cursor: pointer;
 }

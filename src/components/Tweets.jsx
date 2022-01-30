@@ -156,60 +156,51 @@ const Tweets = () => {
   return (
     <div className="Tweets">
       {tweets.map((tweet, i) => {
-        console.log(tweet);
         return (
-          <div id={tweet.id} key={i}>
-            {/* {tweet.image && (
+          <div className="Tweet" id={tweet.id} key={i}>
+            <div className="TweetOne">
+              <Link
+                to="/UserProfile"
+                onClick={() => handleProfileRoute(tweet.uid)}
+              >
+                {/* /////// FOTO USUARIO //////// */}
                 <img
-                  width="100"
-                  height="100"
-                  src={tweet.image}
+                  className="profilePicTweet"
+                  src={tweet.photo}
                   alt="profile picture"
                 />
-              )} */}
-            {/* {tweet.uid === user.uid ? ( */}
-            {/* <Link to="/UserProfile" onClick={console.log(user.uid)}> */}
-            {/* {" "} */}
-            {/* <p>{tweet.autor}</p> */}
-            {/* </Link> */}
-            {/* ) : ( */}
-            {/* <Link to="/PublicProfile" onClick={() => handleProfileRoute(tweet.uid)}> */}
-            {/* {" "} */}
-            {/* <p>{tweet.autor}</p> */}
-            {/* </Link> */}
-            {/* )} */}
-            {/* <Link to="/UserProfile"> */}
-            {/* <p>Usuario: {tweet.autor}</p>
-              </Link> */}
-            <Link
-              to="/UserProfile"
-              onClick={() => handleProfileRoute(tweet.uid)}
-            >
-              <img src={tweet.photo} alt="profile picture" />
-              <p>{tweet.autor}</p>
-            </Link>
+              </Link>
+            </div>
+            <div className="TweetTwo">
+              <div className="NameTrash">
+                {/* /////// NOMBRE USUARIO //////// */}
+                <Link
+                  to="/UserProfile"
+                  onClick={() => handleProfileRoute(tweet.uid)}
+                >
+                  <p>{tweet.autor}</p>
+                </Link>
+                {/* /////////// ELIMINA TWEET //////////// */}
+                <p>
+                  {user.uid === tweet.uid && (
+                    <i
+                      class="far fa-trash-alt"
+                      onClick={() => deleteTweet(tweet.id)}
+                    ></i>
+                    // <button onClick={() => deleteTweet(tweet.id)}>
+                    //   Eliminar tweet
+                    // </button>
+                  )}
+                </p>
+              </div>
+              <div className="MessageLike">
+                {/* ///// MENSAJE TWEET /////// */}
+                <p>{tweet.tweet}</p>
 
-            {/* {edit ? <Tweet tweet={tweet} /> : <p>{tweet.message}</p>} */}
-            <p>{tweet.tweet}</p>
-            {/* <p>{body.tweet}</p> */}
-            {/* <p>Likes: {tweet.likes}</p> */}
-            {/* ////// LIKES///////// */}
-            {/* <p>{showLike(tweet, user)}</p> */}
-            {/* <button onClick={() => setEdit(!edit)}>Actualizar tweet</button> */}
-            {user.uid === tweet.uid && (
-              <button onClick={() => deleteTweet(tweet.id)}>
-                Eliminar tweet
-              </button>
-            )}
-
-            {/* <button onClick={() => deleteTweet(tweet.id)}>
-                Eliminar tweet
-              </button> */}
-
-            {/* <button onClick={() => likeTweet(tweet)}>Me gusta</button> */}
-            {/* ////// LIKES///////// */}
-            <button>{showLike(tweet, user)}</button>
-            <hr />
+                {/* ////// LIKES///////// */}
+                <button>{showLike(tweet, user)}</button>
+              </div>
+            </div>
           </div>
         );
       })}
