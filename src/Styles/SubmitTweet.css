@@ -8,9 +8,11 @@
   margin: 0 auto;
   justify-content: space-between;
   background-color: #150714;
+
 }
 
 .Timeline {
+  border-bottom: 2px groove #60265B;
   box-sizing: border-box;
   width: 105%;
   height: 120px;

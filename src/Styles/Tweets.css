@@ -1,43 +1,102 @@
 .Tweets {
-display: flex;
-flex-direction: column;
-margin: 0 auto;
-width: 550px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 550px;
 }
 
 .Tweet {
-display: flex;
-flex-direction: row;
-/* justify-content: space-around; */
-width: 600px;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-around; */
+  width: 600px;
+  border-bottom: 2px groove #60265B;
 
 }
 .TweetOne {
-    margin-top: 14px;
+  margin-top: 14px;
 }
 
 .profilePicTweet {
-    border: 2.5px solid rgb(255, 187, 0);
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-  }
+  border: 2.5px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
 
 .TweetTwo {
-    display: flex;
-    flex-direction: column;
-margin: 5px 5px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 5px 5px 15px;
 }
 
 .NameTrash {
-    display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-between;
-width: 500px;
-/* margin: 5px 5px 5px 20px; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 500px;
+  /* margin: 5px 5px 5px 20px; */
+  margin-bottom: 0px;
+}
+
+.NameTrash a {
+    /* background-color: rgb(255, 187, 0); */
+    /* box-sizing: content-box;
+    height: 10px;
+    margin: 0 0 0 0;
+    padding: 0; */
+    text-decoration: none;
+}
+
+.NameTrash a p {
+    font-family: "Silkscreen", sans-serif;
+    font-size: 13px;
+    color: #2e132c;
+ background-color: rgb(255, 187, 0); 
+  box-sizing: content-box;
+  /* height: 13px; */
+  /* height: 100%; */
+  margin: 0 0 0 0;
+  padding: 0px;
+  border-radius: 6%;
 }
 
 i:hover {
-cursor: pointer;
+  cursor: pointer;
+}
+
+.MessageLike {
+    margin: -5px 0 0px 0;
+    height: 70px;
+}
+
+.MessageLike p {
+    font-family: "Fira Code", monospace;
+  color: whitesmoke;
+  font-size: 12px;
+  margin: 3px 0 30px 0;
+}
+
+.MessageLike button {
+    border: none;
+    text-decoration: none;
+    background: none;
+    font-family: "Fira Code", monospace;
+  
+}
+
+.likes p {
+    color: #F50D5A;
+    margin: 0 0 0 7px;
+    display: inline-block;
+    align-self: center;
+}
+
+.dislikes p {
+    /* color: #F50D5A; */
+    /* margin: -3px 0 0 0; */
+    margin: 0 0 0 7px;
+    display: inline-block;
+    align-self: center;
 }

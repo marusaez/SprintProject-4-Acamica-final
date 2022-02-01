@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 // import { auth } from "../firebase";
 import { firestore, storage, auth, loginGoogle, logout } from "../firebase";
-import like from "../images/like.png"
-import dislike from "../images/dislike.png"
+import like from "../images/like.svg"
+import dislike from "../images/dislike.svg"
 
 
 export const AppContext = createContext();
@@ -84,12 +84,12 @@ const showLike = (tweet, user) => {
                 <>
                     <span
                         onClick={() => likeTweet(tweet, user)}
-                        className="likes"
+                        className="dislikes"
                     >
                         {/* <span>X</span> */}
                         <img height="12px" src={dislike} alt="" />
                         {/* <img height="12px" src="dislike.png" alt="" /> */}
-                        <span>{tweet.likedBy.length}</span>
+                        <p> {tweet.likedBy.length}</p>
                     </span>
                 </>
             );
@@ -103,7 +103,7 @@ const showLike = (tweet, user) => {
                     >
                         {/* <img height="12px" src={corazon} alt="" /> */}
                         <img height="12px" src={like} alt="" />
-                        <span>{tweet.likedBy.length}</span>
+                        <p> {tweet.likedBy.length}</p>
                     </span>
                 </>
             );

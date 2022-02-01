@@ -20,9 +20,7 @@ const Timeline = () => {
         ) : (
           <div>
             <TimelineHeader />
-            <hr />
             <div className="Timeline">
-
             <SubmitTweet  />
             </div>
             <Tweets />
