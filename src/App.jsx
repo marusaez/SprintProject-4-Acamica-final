@@ -4,6 +4,7 @@ import "./Styles/Login.css";
 import "./Styles/TimelineHeader.css";
 import "./Styles/SubmitTweet.css";
 import "./Styles/Tweets.css";
+import "./Styles/ProfileInfo.css";
 
 function App() {
   

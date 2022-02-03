@@ -4,23 +4,24 @@ import UserFavs from "../components/UserFavs";
 import UserPosts from "../components/UserPosts";
 import { Navigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
+import ProfileInfo from "../components/ProfileInfo";
 
 
 const UserProfile = () => {
-  const { setUser, user, tweet } = useAppContext();
+  const { setUser, user, tweet, posts } = useAppContext();
 
-  const [posts, setPosts] = useState(true);
-  const [favorites, setFavorites] = useState(false);
+  // const [posts, setPosts] = useState(true);
+  // const [favorites, setFavorites] = useState(false);
 
-  const postsBtnHandler = () => {
-    setPosts(true);
-    setFavorites(false);
-  };
+  // const postsBtnHandler = () => {
+  //   setPosts(true);
+  //   setFavorites(false);
+  // };
 
-  const favsBtnHandler = () => {
-    setPosts(false);
-    setFavorites(true);
-  };
+  // const favsBtnHandler = () => {
+  //   setPosts(false);
+  //   setFavorites(true);
+  // };
 
   return (
       <div>
@@ -29,11 +30,14 @@ const UserProfile = () => {
         ) : (
           <div>
             <ProfileHeader />
-            <hr />
-            <div>
+            {/* <hr /> */}
+            <ProfileInfo />
+            {/* <hr /> */}
+
+            {/* <div>
               <button onClick={postsBtnHandler}>Posts</button>
               <button onClick={favsBtnHandler}>Favorites</button>
-            </div>
+            </div> */}
             {posts ? <UserPosts /> : <UserFavs />}
           </div>
         )}

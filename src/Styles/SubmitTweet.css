@@ -6,6 +6,7 @@
   /* align-items: center; */
   align-items: flex-start;
   margin: 0 auto;
+  margin-top: 10px;
   justify-content: space-between;
   background-color: #150714;
 

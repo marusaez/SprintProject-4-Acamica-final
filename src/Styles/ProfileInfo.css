@@ -1,0 +1,50 @@
+.ProfileInfo {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    /* width: 1100px; */
+    /* align-items: center; */
+    /* align-items: flex-start; */
+    /* margin: 0 auto; */
+  /* margin: -5px 0px -5px -50px; */
+    /* margin-top: 10px; */
+    background-color: #150714;
+    width: 105%;
+    height: 146px;
+    margin: 5px 0px -5px -50px;
+}
+
+.pictureInfo {
+    border: 2.5px solid rgb(255, 187, 0);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.ProfileInfo h2{
+    font-family: "Silkscreen", sans-serif;
+    font-size: 15px;
+    color: #2e132c;
+ background-color: rgb(255, 187, 0); 
+  box-sizing: content-box;
+  /* height: 13px; */
+  /* height: 100%; */
+  margin: 10px 0 20px 0;
+  padding: 0px;
+  border-radius: 6%;
+}
+
+.ProfileInfoBttns button {
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    background: none;
+}
+
+.ProfileInfoBttns button:hover {
+    cursor: pointer;
+  }

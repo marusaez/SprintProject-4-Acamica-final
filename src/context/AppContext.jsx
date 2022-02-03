@@ -24,7 +24,8 @@ const AppProvider = ({children}) => {
   const [tweets, setTweets] = useState([]);
   const [profileRoute, setProfileRoute] = useState("")
   const [uid, setUid] = useState("")
-
+  const [posts, setPosts] = useState(true);
+  const [favorites, setFavorites] = useState(false);
 
 
   useEffect(() => {
@@ -149,7 +150,7 @@ const showLike = (tweet, user) => {
 
     // console.log(tweets)
   return (
-    <AppContext.Provider value={{user, setUser, tweet, setTweet, tweets, setTweets, deleteTweet, showLike, profileRoute, setProfileRoute, uid, setUid}}>
+    <AppContext.Provider value={{user, setUser, tweet, setTweet, tweets, setTweets, deleteTweet, showLike, profileRoute, setProfileRoute, uid, setUid, posts, setPosts, favorites, setFavorites}}>
       {children}
     </AppContext.Provider>
     
