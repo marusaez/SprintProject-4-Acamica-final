@@ -1,23 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import GoogleLogin from "../components/GoogleLogin";
-import Timeline from "../pages/Timeline";
 import { useAppContext } from "../context/AppContext";
-import { auth } from "../firebase";
-import {Routes, Route, Navigate} from "react-router-dom"
-
+import { Navigate } from "react-router-dom";
 
 const Home = () => {
-  const { user, setUser } = useAppContext();
+  const { user } = useAppContext();
 
   return (
-    <div className="Home">
-      {/* <div>{user ? ColorSelect : <GoogleLogin/>}</div> */}
-      {/* <div>{user?.displayName ? <Timeline /> : <GoogleLogin />}</div> */}
-      <div>{user?.displayName ? <Navigate to="/Timeline" /> : <GoogleLogin />}</div>
-      {/* <div>{user ? <Link to="/Timeline"></Link> : <GoogleLogin/>}</div> */}
-
-      {/* <GoogleLogin/> */}
-    </div>
+    <main className="Home">
+      <div>
+        {user?.displayName ? <Navigate to="/Timeline" /> : <GoogleLogin />}
+      </div>
+    </main>
   );
 };
 

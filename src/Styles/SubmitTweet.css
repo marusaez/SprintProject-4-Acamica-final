@@ -1,19 +1,16 @@
 .SubmitTweet {
   display: flex;
   flex-direction: row;
-  /* width: 600px; */
   width: 600px;
-  /* align-items: center; */
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10px;
   justify-content: space-between;
   background-color: #150714;
-
 }
 
 .Timeline {
-  border-bottom: 2px groove #60265B;
+  border-bottom: 2px groove #60265b;
   box-sizing: border-box;
   width: 105%;
   height: 120px;
@@ -55,6 +52,45 @@
 
 .SubmitTextarea::-ms-input-placeholder {
   color: #914d8b;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 0 -7px 0;
+}
+
+progress {
+  border-radius: 7px;
+  width: 100%;
+  height: 5px;
+}
+progress::-webkit-progress-bar {
+  background-color: #2f112d;
+}
+progress::-webkit-progress-value {
+  background-color: #00da76;
+}
+progress::-moz-progress-bar {
+  background-color: #2f112d;
+}
+
+.tweetLenght {
+  display: flex;
+  flex-direction: row;
+  margin: 0px 0 1px 0;
+  font-family: "Fira Code", monospace;
+  font-size: 10px;
+}
+
+.lenghtCount {
+  color: whitesmoke;
+  margin: 1px 0 0 0;
+}
+
+.maxLenght {
+  color: #f50d5a;
+  margin: 1px 2px 0px auto;
 }
 
 .postOff {

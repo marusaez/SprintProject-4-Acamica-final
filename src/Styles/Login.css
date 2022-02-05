@@ -1,7 +1,6 @@
 body {
-  background-color: #2E132C;
+  background-color: #2e132c;
   color: whitesmoke;
-  /* width: 100%; */
   overflow-x: hidden;
 }
 
@@ -22,12 +21,10 @@ body {
 
 .GoogleLogin {
   display: flex;
-  /* align-self: center; */
   align-items: center;
   align-content: center;
   justify-content: center;
   width: 1300px;
-  /* margin: 10vh 0 0 30vh; */
   padding: 0;
   margin-top: 9vh;
   margin-left: 9vh;
@@ -40,7 +37,6 @@ body {
   margin-top: 15vh;
   width: 500px;
   box-sizing: border-box;
-    /* width:min-content; */
 }
 .signIn {
   width: 220px;

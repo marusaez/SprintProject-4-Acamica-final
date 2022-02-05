@@ -29,7 +29,6 @@
 
 .backBttn {
   display: flex;
-  /* justify-content: space-around; */
   text-decoration: none;
   font-family: "Silkscreen", sans-serif;
   font-size: 20px;
@@ -37,5 +36,5 @@
 }
 
 .backBttn span {
-margin: 4px 0 0 10px;
+  margin: 4px 0 0 10px;
 }

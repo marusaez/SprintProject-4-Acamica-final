@@ -1,55 +1,18 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { useAppContext } from "../context/AppContext";
-import { firestore, storage, auth, loginGoogle, logout } from "../firebase";
-
+import Tweet from "./Tweet";
 
 const UserPosts = () => {
-    const { user, setUser, tweet, setTweet, tweets, setTweets, deleteTweet, showLike, uid } = useAppContext();
+  const { tweets, uid } = useAppContext();
 
-    return (
-      <div>
-        {tweets.map((tweet, i) => {
-            if (uid === tweet.uid) {
-                
-          return (
-            <div id={tweet.id} key={i}>
-              {/* {tweet.image && (
-                <img
-                  width="100"
-                  height="100"
-                  src={tweet.image}
-                  alt="profile picture"
-                />
-              )} */}
-              {/* <p>Usuario: {user.uid === tweet.uid && tweet.autor}</p> */}
-              <p>Usuario: {tweet.autor}</p>
-              {/* {edit ? <Tweet tweet={tweet} /> : <p>{tweet.message}</p>} */}
-              {/* <p>{user.uid === tweet.uid && tweet.tweet}</p> */}
-              <p>{tweet.tweet}</p>
-              {/* <p>{body.tweet}</p> */}
-              {/* <p>Likes: {tweet.likes}</p> */}
-              {/* ////// LIKES///////// */}
-              {/* <p>{showLike(tweet, user)}</p> */}
-              {/* <button onClick={() => setEdit(!edit)}>Actualizar tweet</button> */}
-              {user.uid === tweet.uid && (
-                <button onClick={() => deleteTweet(tweet.id)}>
-                  Eliminar tweet
-                </button>
-              )}
-
-              {/* <button onClick={() => deleteTweet(tweet.id)}>
-                Eliminar tweet
-              </button> */}
-
-              {/* <button onClick={() => likeTweet(tweet)}>Me gusta</button> */}
-              {/* ////// LIKES///////// */}
-              {/* <button>{user.uid === tweet.uid && showLike(tweet, user)}</button> */}
-              <button>{showLike(tweet, user)}</button>
-              <hr />
-            </div>
-          )};
-        })}
-      </div>
-    );
-  };
+  return (
+    <div className="Tweets">
+      {tweets.map((tweet, i) => {
+        if (uid === tweet.uid) {
+          return <Tweet tweet={tweet} i={i} />;
+        }
+      })}
+    </div>
+  );
+};
 export default UserPosts;

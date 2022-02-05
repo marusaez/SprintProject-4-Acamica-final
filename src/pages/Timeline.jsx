@@ -6,27 +6,22 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
 
 const Timeline = () => {
-  const { setUser, user } = useAppContext();
-
-  //   const logout = () => {
-  //     auth.signOut();
-  //     setUser(null);
-  //   };
+  const { user } = useAppContext();
 
   return (
-    <div>
-        {!user?.displayName ? (
-          <Navigate to="/" />
-        ) : (
-          <div>
-            <TimelineHeader />
-            <div className="Timeline">
-            <SubmitTweet  />
-            </div>
-            <Tweets />
+    <main>
+      {!user?.displayName ? (
+        <Navigate to="/" />
+      ) : (
+        <div>
+          <TimelineHeader />
+          <div className="Timeline">
+            <SubmitTweet />
           </div>
-        )}
-    </div>
+          <Tweets />
+        </div>
+      )}
+    </main>
   );
 };
 

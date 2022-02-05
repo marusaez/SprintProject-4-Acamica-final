@@ -8,7 +8,6 @@
 .Tweet {
   display: flex;
   flex-direction: row;
-  /* justify-content: space-around; */
   width: 600px;
   border-bottom: 2px groove #60265B;
 
@@ -36,16 +35,10 @@
   align-items: center;
   justify-content: space-between;
   width: 500px;
-  /* margin: 5px 5px 5px 20px; */
   margin-bottom: 0px;
 }
 
 .NameTrash a {
-    /* background-color: rgb(255, 187, 0); */
-    /* box-sizing: content-box;
-    height: 10px;
-    margin: 0 0 0 0;
-    padding: 0; */
     text-decoration: none;
 }
 
@@ -55,8 +48,6 @@
     color: #2e132c;
  background-color: rgb(255, 187, 0); 
   box-sizing: content-box;
-  /* height: 13px; */
-  /* height: 100%; */
   margin: 0 0 0 0;
   padding: 0px;
   border-radius: 6%;
@@ -94,8 +85,6 @@ i:hover {
 }
 
 .dislikes p {
-    /* color: #F50D5A; */
-    /* margin: -3px 0 0 0; */
     margin: 0 0 0 7px;
     display: inline-block;
     align-self: center;

@@ -1,9 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-// import { auth } from "../firebase";
-import { firestore, storage, auth, loginGoogle, logout } from "../firebase";
-import like from "../images/like.svg"
-import dislike from "../images/dislike.svg"
-
+import { firestore, auth } from "../firebase";
+import like from "../images/like.svg";
+import dislike from "../images/dislike.svg";
 
 export const AppContext = createContext();
 
@@ -11,7 +9,7 @@ export const useAppContext = () => {
   return useContext(AppContext);
 };
 
-const AppProvider = ({children}) => {
+const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [tweet, setTweet] = useState({
     tweet: "",
@@ -19,115 +17,88 @@ const AppProvider = ({children}) => {
     autor: "",
     email: "",
     likes: 0,
-    id: ""
+    id: "",
   });
   const [tweets, setTweets] = useState([]);
-  const [profileRoute, setProfileRoute] = useState("")
-  const [uid, setUid] = useState("")
+  const [profileRoute, setProfileRoute] = useState("");
+  const [uid, setUid] = useState("");
   const [posts, setPosts] = useState(true);
   const [favorites, setFavorites] = useState(false);
-
+  const [uidUsername, setUidUsername] = useState("");
+  const [uidProfilePic, setUidProfilePic] = useState("");
 
   useEffect(() => {
-
     auth.onAuthStateChanged((user) => {
-      console.log("este es el useEffect")
-        const {displayName, email, photoURL, uid} = user
-        setUser({displayName, email, photoURL, uid});
-        // console.log([{displayName, email, photoURL, uid}])
-      });
-      // return console.log(user)
+      const { displayName, email, photoURL, uid } = user;
+      setUser({ displayName, email, photoURL, uid });
+    });
   }, []);
-  
+
   const deleteTweet = (id) => {
-    firestore
-      .collection("tweets")
-      .doc(id)
-      .delete()
-    //   .then(() => {
-        //   getAllTweets();
-    //   })
-      .catch((err) => {
-        console.error(err.message);
-      });
+    if (window.confirm("Do you really want to delete this message?")) {
+      firestore
+        .collection("tweets")
+        .doc(id)
+        .delete()
+        .catch((err) => {
+          console.error(err.message);
+        });
+    }
   };
 
-  //// LIKES
+  //// LIKES /////
   const likeTweet = (tweet, user) => {
-    // console.log("likes", tweet)
     let addLikedBy = [...tweet.likedBy, user.uid];
 
     firestore
       .doc(`tweets/${tweet.id}`)
       .update({ likedBy: addLikedBy })
-    //   .then(() => {
-        // getAllTweets();
-    //   })
       .catch((err) => {
         console.error(err.message);
       });
   };
 
   const dislikeTweet = (tweet, user) => {
-    const updatedLikedBy = tweet.likedBy.filter((userUid) => user.uid !== userUid);
+    const updatedLikedBy = tweet.likedBy.filter(
+      (userUid) => user.uid !== userUid
+    );
 
-    // actualizamos el tweet en firebase
+    //// ACTUALIZAR TWEET EN FIREBASE //////
     firestore.doc(`tweets/${tweet.id}`).update({ likedBy: updatedLikedBy });
-};
+  };
 
-const showLike = (tweet, user) => {
+  const showLike = (tweet, user) => {
     if (tweet.likedBy && user) {
-        const liked = tweet.likedBy.findIndex((userLike) => user.uid === userLike);
+      const liked = tweet.likedBy.findIndex(
+        (userLike) => user.uid === userLike
+      );
 
-        // la persona no le ha dado like
-        if (liked < 0) {
-            return (
-                <>
-                    <span
-                        onClick={() => likeTweet(tweet, user)}
-                        className="dislikes"
-                    >
-                        {/* <span>X</span> */}
-                        <img height="12px" src={dislike} alt="" />
-                        {/* <img height="12px" src="dislike.png" alt="" /> */}
-                        <p> {tweet.likedBy.length}</p>
-                    </span>
-                </>
-            );
-        } else {
-            // si la persona ya le dio like
-            return (
-                <>
-                    <span
-                        onClick={() => dislikeTweet(tweet, user)}
-                        className="likes"
-                    >
-                        {/* <img height="12px" src={corazon} alt="" /> */}
-                        <img height="12px" src={like} alt="" />
-                        <p> {tweet.likedBy.length}</p>
-                    </span>
-                </>
-            );
-        }
-    } 
-    // else {
-    //     return (
-    //         <>
-    //             <span
-    //                 onClick={() => likeTweet(id, likes, user.uid, tweet.likedBy)}
-    //                 className="likes"
-    //             >
-    //                 <img height="13px" src={corazon} alt="" />
-    //                 <span>{likes ? likes : 0}</span>
-    //             </span>
-    //         </>
-    //     );
-    // }
-};
+      //// NO HA DADO LIKE ////
+      if (liked < 0) {
+        return (
+          <>
+            <span onClick={() => likeTweet(tweet, user)} className="dislikes">
+              <img height="12px" src={dislike} alt="" />
+              <p> {tweet.likedBy.length}</p>
+            </span>
+          </>
+        );
+      } else {
+        //// YA HA DADO LIKE ////
+        return (
+          <>
+            <span onClick={() => dislikeTweet(tweet, user)} className="likes">
+              <img height="12px" src={like} alt="" />
+              <p> {tweet.likedBy.length}</p>
+            </span>
+          </>
+        );
+      }
+    }
+  };
 
   useEffect(() => {
-    // getAllTweets()
-    ///// MOSTRAR TWEETS
+    ///// MOSTRAR TWEETS ////////
     const desuscribir = firestore
       .collection("tweets")
       .onSnapshot((snapshot) => {
@@ -140,21 +111,42 @@ const showLike = (tweet, user) => {
             email: doc.data().email,
             likes: doc.data().likes || 0,
             id: doc.id,
-            likedBy: doc.data().likedBy
+            likedBy: doc.data().likedBy,
           };
         });
         setTweets(tweets);
       });
-      return () => desuscribir();
-    }, []);
+    return () => desuscribir();
+  }, []);
 
-    // console.log(tweets)
   return (
-    <AppContext.Provider value={{user, setUser, tweet, setTweet, tweets, setTweets, deleteTweet, showLike, profileRoute, setProfileRoute, uid, setUid, posts, setPosts, favorites, setFavorites}}>
+    <AppContext.Provider
+      value={{
+        user,
+        setUser,
+        tweet,
+        setTweet,
+        tweets,
+        setTweets,
+        deleteTweet,
+        showLike,
+        profileRoute,
+        setProfileRoute,
+        uid,
+        setUid,
+        posts,
+        setPosts,
+        favorites,
+        setFavorites,
+        uidUsername,
+        setUidUsername,
+        uidProfilePic,
+        setUidProfilePic,
+      }}
+    >
       {children}
     </AppContext.Provider>
-    
   );
-}
+};
 
 export default AppProvider;
