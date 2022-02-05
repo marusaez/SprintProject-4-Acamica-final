@@ -8,10 +8,12 @@
 .Tweet {
   display: flex;
   flex-direction: row;
-  width: 600px;
-  border-bottom: 2px groove #60265B;
-
+  /* width: 600px; */
+  width: 100%;
+  border-bottom: 2px groove #60265b;
+  padding-bottom: 10px;
 }
+
 .TweetOne {
   margin-top: 14px;
 }
@@ -39,14 +41,14 @@
 }
 
 .NameTrash a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .NameTrash a p {
-    font-family: "Silkscreen", sans-serif;
-    font-size: 13px;
-    color: #2e132c;
- background-color: rgb(255, 187, 0); 
+  font-family: "Silkscreen", sans-serif;
+  font-size: 13px;
+  color: #2e132c;
+  background-color: rgb(255, 187, 0);
   box-sizing: content-box;
   margin: 0 0 0 0;
   padding: 0px;
@@ -58,34 +60,46 @@ i:hover {
 }
 
 .MessageLike {
-    margin: -5px 0 0px 0;
-    height: 70px;
+  margin: -5px 0 0 0;
+  /* height: 70px; */
+  height: 100%;
+  padding-bottom: 0 auto;
 }
 
 .MessageLike p {
-    font-family: "Fira Code", monospace;
+  font-family: "Fira Code", monospace;
   color: whitesmoke;
   font-size: 12px;
   margin: 3px 0 30px 0;
+  width: 100%;
 }
 
 .MessageLike button {
-    border: none;
-    text-decoration: none;
-    background: none;
-    font-family: "Fira Code", monospace;
-  
+  border: none;
+  text-decoration: none;
+  background: none;
+  font-family: "Fira Code", monospace;
+}
+
+.likes {
+  display: flex;
+  flex-direction: row;
 }
 
 .likes p {
-    color: #F50D5A;
-    margin: 0 0 0 7px;
-    display: inline-block;
-    align-self: center;
+  color: #f50d5a;
+  margin: 0 0 0 7px;
+  display: inline-block;
+  align-self: center;
+}
+
+.dislikes {
+  display: flex;
+  flex-direction: row;
 }
 
 .dislikes p {
-    margin: 0 0 0 7px;
-    display: inline-block;
-    align-self: center;
+  margin: 0 0 0 7px;
+  display: inline-block;
+  align-self: center;
 }

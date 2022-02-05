@@ -3,7 +3,7 @@ import Main from "./components/Main";
 import "./Styles/Login.css";
 import "./Styles/TimelineHeader.css";
 import "./Styles/SubmitTweet.css";
-import "./Styles/Tweets.css";
+import "./Styles/Tweet.css";
 import "./Styles/ProfileInfo.css";
 
 function App() {
